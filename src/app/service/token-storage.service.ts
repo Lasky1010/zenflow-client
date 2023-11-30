@@ -22,7 +22,6 @@ export class TokenStorageService {
   }
 
   public saveUser(user: any):void {
-
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
 
@@ -35,7 +34,7 @@ export class TokenStorageService {
 
   logOut():void{
     window.sessionStorage.clear();
-    window.location.reload();
+    window.location.assign('localhost:4200/login');
 }
 
 }

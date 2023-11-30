@@ -18,6 +18,9 @@ export class UserService {
   getCurrentUser(): Observable<any> {
     return this.http.get(USER_API);
   }
+  getCurrentUsername(): Observable<any> {
+    return this.http.get(USER_API+'/name');
+  }
 
   updateUser(user: any): Observable<any> {
     return this.http.put(USER_API + '/update', user);

@@ -13,9 +13,9 @@ export class AuthService {
 
   public login(user:any):Observable<any>{
     return this.http.post(AUTH_API, {
-      username:user.username,
-      password:user.password
-    });
+        username:user.username,
+        password:user.password}
+    )
   }
 
   public sigUp(user:any):Observable<any>{
