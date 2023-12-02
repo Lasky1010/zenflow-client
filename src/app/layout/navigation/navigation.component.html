@@ -1,0 +1,33 @@
+<div class="main-page">
+  <nav class="navbar" style="color: white; ">
+    <div class="container-fluid" style="margin: 0 40px;">
+      <a routerLink="/"
+         style="margin-left: 20px;font-weight: 600;font-size: 30px;text-decoration: none;color: #4a192c;">
+        Zenflow
+        <img [src]="'https://i.imgur.com/vB2S4EJ.jpg'" width="40px" alt="">
+      </a>
+
+      <span class="spacer"></span>
+
+
+      <span class="spacer"></span>
+
+      <a class="profile-link" routerLink="/profile" style="margin-top: 0.5rem">
+        <h5 routerLink="/profile" style="color: #4a192c" *ngIf="isDataLoaded">
+          {{this.username}}
+          <img class="profile-img" [src]="formatImage(photo) || 'https://i.imgur.com/ySPGGoI.jpg'" alt="profile photo">
+        </h5>
+      </a>
+
+      <button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" style="color: #4a192c" matTooltip="More" mat-icon-button>
+        <mat-icon>view_headline</mat-icon>
+      </button>
+      <mat-menu id="menu-item" #menu="matMenu">
+        <button (click)="logout()" mat-menu-item>
+          Logout
+        </button>
+      </mat-menu>
+    </div>
+  </nav>
+
+</div>

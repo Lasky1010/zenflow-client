@@ -1,0 +1,29 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+#menu-item button {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.mat-mdc-menu-content .ng-tns-c2786309385-0 {
+  padding: 0;
+}
+
+#menu-item {
+  padding: 0;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: white;
+  font-size: 20px
+}
+
+.profile-img {
+  width: 50px;
+  border-radius: 30px;
+  border: 0.05em solid black;
+}

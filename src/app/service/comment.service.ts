@@ -14,7 +14,9 @@ export class CommentService {
 
   addToCommentToPost(postId: number, message: string): Observable<any> {
     return this.http.post(COMMENT_API + '/' + postId, {
-      message: message
+      message: message,
+      username: null,
+      createdAt: null
     });
   }
 

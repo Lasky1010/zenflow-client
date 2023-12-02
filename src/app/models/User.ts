@@ -1,8 +1,14 @@
+import {Post} from "./Post";
+
 export interface User {
   id: number;
   name: string;
   username: string;
   email: string;
+  imageData: File;
   password:string;
-  bio:string;
+  posts: Post[];
+  permissions: any;
+  authorities: any;
+  createdAt: any;
 }

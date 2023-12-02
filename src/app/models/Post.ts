@@ -1,4 +1,5 @@
 import {Comment} from './Comment';
+
 export interface Post {
 
   id?: number;
@@ -7,7 +8,7 @@ export interface Post {
 
   location: string;
 
-  image?: File;
+  imageData?: File;
 
   description: string;
 

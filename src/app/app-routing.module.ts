@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./auth/login/login.component";
 import {SignupComponent} from "./auth/signup/signup.component";
-import {NavigationComponent} from "./layout/navigation/navigation.component";
+import {IndexComponent} from "./layout/index/index.component";
+import {AuthGuardService} from "./service/auth-guard.service";
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'',component:NavigationComponent}
+  {path: '', component: IndexComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

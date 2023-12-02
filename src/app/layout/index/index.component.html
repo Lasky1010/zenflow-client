@@ -1,0 +1,76 @@
+<app-navigation></app-navigation>
+
+<div class="container text-center index-page" *ngIf="isDataLoaded && isUserDataLoaded">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col" style="margin: -40px 0 50px 0">
+      <mat-card class="post-card" *ngFor="let post of posts; let i = index">
+        <!--    header   -->
+        <div class="conteiner-fluid">
+          <div class="row">
+            <div class="col">
+              <img class="profile-img" [src]="formatImage(user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
+                   alt="profile photo">
+            </div>
+            <div class="col-10" style="padding: 0;text-align: start;margin-top: 1.11rem;font-weight: 500">
+              {{user.username}}
+            </div>
+          </div>
+        </div>
+
+        <!--    body   -->
+        <img mat-card-image [src]="formatImage(post.imageData)" alt="post image" width="400px">
+
+        <mat-card-content style="text-align: start;">
+          <p style="margin-top: 5px ">
+            <span style="font-weight: 500"> {{user.username}}</span>
+            <span> {{post.description}}</span>
+          </p>
+
+        </mat-card-content>
+
+        <mat-card-actions align="start">
+
+          <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)"
+                  [ngClass]="post.whoLikes.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+            <mat-icon>favorite</mat-icon>
+            Like
+          </button>
+        </mat-card-actions>
+        <!--    comments   -->
+        <div style="text-align: left;margin-left: 10px">
+            <span *ngIf="post.comments.length<3;else elseBlock">
+              <span *ngFor="let comment of post.comments">
+                <span style="font-weight: 500;margin-bottom: 5px">{{comment.username}}:</span> {{comment.message}}<br>
+              </span>
+            </span>
+          <ng-template #elseBlock>
+            <p><a *ngIf="!showComments" class="all-comments" (click)="toggleComments()">Просмотреть все
+              комментарии({{post.comments.length}})</a></p>
+            <span *ngIf="showComments">
+                <span *ngFor="let comment of post.comments">
+                  <span style="font-weight: 500;margin-bottom: 5px">{{comment.username}}:</span> {{comment.message}}<br>
+                </span>
+                 <p><a class="all-comments" (click)="toggleComments();!showComments">Скрыть все комментарии</a></p>
+
+              </span>
+
+          </ng-template>
+
+        </div>
+
+        <mat-form-field class="w-100">
+          <mat-label>Leave a comment...</mat-label>
+          <input (keyup.enter)="postComment($event.target.value, post.id, i)" matInput #message maxlength="128">
+        </mat-form-field>
+        <!--<div class="input-group mb-3">
+          <input  (keyup.enter)="postComment($event.target.value, post.id, i)" matInput #message maxlength="128"class="form-control" placeholder="Leave a comment..." aria-label="Leave a comment...">
+        </div>-->
+      </mat-card>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+</div>

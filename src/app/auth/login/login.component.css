@@ -1,0 +1,78 @@
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+
+}
+
+#controls {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+}
+
+mat-form-field {
+  width: 70%;
+}
+
+.signup {
+  padding: 0.6em;
+  margin-bottom: 1em;
+  color: white;
+  border: none;
+  font-weight: 500;
+  font-size: medium;
+}
+
+.login {
+  padding: 1em;
+  margin-bottom: 1em;
+  background: #ffffff;
+  color: #7c1241;
+  border: none;
+
+  font-weight: 500;
+  font-size: medium;
+}
+
+.main-content {
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
+  margin: 7em auto;
+  display: flex;
+}
+
+.company__info {
+  background-color: #4a192c;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+@media screen and (max-width: 640px) {
+  .main-content {
+    width: 40%;
+  }
+
+  .company__info {
+    display: none;
+  }
+
+  .login_form {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+}
+
+.row > h2 {
+  color: #ffffff;
+}
+
+.login_form {
+  background-color: #775262;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}

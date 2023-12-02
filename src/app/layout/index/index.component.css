@@ -1,0 +1,41 @@
+.index-page {
+  display: block;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+
+.post-card {
+  display: inline;
+  margin: 2rem;
+
+}
+
+.is-liked {
+  color: darkred;
+}
+
+.not-liked {
+  color: grey;
+}
+
+.profile-img {
+  margin: 8px 0 8px 8px;
+  width: 40px;
+  border-radius: 35px;
+  border: 0.05em solid black;
+}
+
+.profile-photo {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.all-comments {
+  color: #565555;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
