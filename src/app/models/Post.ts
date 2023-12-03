@@ -1,4 +1,5 @@
 import {Comment} from './Comment';
+import {User} from "./User";
 
 export interface Post {
 
@@ -14,7 +15,7 @@ export interface Post {
 
   whoLikes: string[];
 
-  username: string;
+  user: User;
 
   comments: Comment[];
 }

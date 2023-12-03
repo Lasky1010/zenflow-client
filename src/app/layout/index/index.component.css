@@ -7,11 +7,10 @@
 .post-card {
   display: inline;
   margin: 2rem;
-
 }
 
 .is-liked {
-  color: darkred;
+  color: #8c3023;
 }
 
 .not-liked {
@@ -19,6 +18,7 @@
 }
 
 .profile-img {
+  align-content: start;
   margin: 8px 0 8px 8px;
   width: 40px;
   border-radius: 35px;

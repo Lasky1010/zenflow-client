@@ -4,27 +4,26 @@
   <div class="row">
     <div class="col">
     </div>
-    <div class="col" style="margin: -40px 0 50px 0">
+    <div class="col" style="margin: -10px 0 50px 0">
       <mat-card class="post-card" *ngFor="let post of posts; let i = index">
         <!--    header   -->
-        <div class="conteiner-fluid">
-          <div class="row">
-            <div class="col">
-              <img class="profile-img" [src]="formatImage(user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
-                   alt="profile photo">
-            </div>
-            <div class="col-10" style="padding: 0;text-align: start;margin-top: 1.11rem;font-weight: 500">
-              {{user.username}}
-            </div>
+        <mat-card-header style="text-align: left">
+          <div mat-card-avatar>
+            <img class="profile-img" [src]="formatImage(post.user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
+                 alt="profile photo">
           </div>
-        </div>
+          <a routerLink="/profile" style="text-decoration: none;font-weight: 500;color: black">
+            <mat-card-title style="margin-top: 1.15rem;margin-left: 1rem;">{{post.user.username}} </mat-card-title>
+          </a>
+        </mat-card-header>
 
         <!--    body   -->
         <img mat-card-image [src]="formatImage(post.imageData)" alt="post image" width="400px">
 
         <mat-card-content style="text-align: start;">
           <p style="margin-top: 5px ">
-            <span style="font-weight: 500"> {{user.username}}</span>
+            <a routerLink="/profile"
+               style="text-decoration: none;font-weight: 500;color: black"><span> {{post.user.username}}</span></a>
             <span> {{post.description}}</span>
           </p>
 
@@ -32,10 +31,9 @@
 
         <mat-card-actions align="start">
 
-          <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)"
-                  [ngClass]="post.whoLikes.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
-            <mat-icon>favorite</mat-icon>
-            Like
+          <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)">
+            <mat-icon [ngClass]="post.whoLikes.indexOf(user.username) != -1 ? 'is-liked' : 'not-liked'">favorite
+            </mat-icon>
           </button>
           {{post.whoLikes.length}}
         </mat-card-actions>
@@ -47,20 +45,21 @@
               </span>
             </span>
           <ng-template #elseBlock>
-
               <span *ngIf="!showComments">
+                 <a routerLink="/profile" style="text-decoration: none;font-weight: 500;color: black">
                 <span style="font-weight: 500">
                 {{post.comments.at(post.comments.length - 1)?.username}}:
-              </span>
+              </span></a>
                 {{post.comments.at(post.comments.length - 1)?.message}}
               </span><br>
-
             <a *ngIf="!showComments" class="all-comments" (click)="toggleComments()">Просмотреть все
               комментарии({{post.comments.length}})</a>
             <br>
             <span *ngIf="showComments">
                 <span *ngFor="let comment of post.comments">
-                  <span style="font-weight: 500;margin-bottom: 5px">{{comment.username}}:</span> {{comment.message}}<br>
+                  <span style=";margin-bottom: 5px"> <a routerLink="/profile"
+                                                        style="text-decoration: none;font-weight: 500;color: black">{{comment.username}}</a>:</span> {{comment.message}}
+                  <br>
                 </span>
                  <p><a class="all-comments" (click)="toggleComments();!showComments">Скрыть все комментарии</a></p>
 

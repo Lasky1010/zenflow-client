@@ -19,10 +19,10 @@ export class IndexComponent implements OnInit {
   user: User;
   isDataLoaded = false;
   isUserDataLoaded = false;
-  showComments = false; // флаг для отображения комментариев
+  showComments = false;
 
   toggleComments() {
-    this.showComments = !this.showComments; // изменение значения флага
+    this.showComments = !this.showComments;
   }
 
   constructor(private commentService: CommentService,

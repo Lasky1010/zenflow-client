@@ -23,6 +23,10 @@ export class UserService {
   updateUser(user: any): Observable<any> {
     return this.http.put(USER_API + '/update', user);
   }
+
+  getUsernameByUsername(username: any): Observable<any> {
+    return this.http.get(USER_API + '/' + username);
+  }
 }
 
 const USER_API = 'http://localhost:8080/api/user';
