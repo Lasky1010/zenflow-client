@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {PostService} from '../../service/post.service';
@@ -9,8 +9,7 @@ import {UserService} from '../../service/user.service';
 import {ImageService} from "../../service/image.service";
 import {ActivatedRoute} from "@angular/router";
 import {EditComponent} from "../../user/edit/edit.component";
-import {IndexComponent} from "../index/index.component";
-import {async, delay} from "rxjs";
+import {subscribeOn} from "rxjs";
 
 
 @Component({
@@ -28,6 +27,8 @@ export class ProfileComponent implements OnInit {
   selectedFile: File;
   //@ts-ignore
   previewImgURL: any;
+
+  isSubscribed = false;
 
   constructor(private tokenService: TokenStorageService,
               private postService: PostService,
@@ -57,9 +58,12 @@ export class ProfileComponent implements OnInit {
         });
       console.log(userId);
     });
-
-
   }
+
+  subscribe(): void {
+    this.isSubscribed = !this.isSubscribed;
+  }
+
 
   openEditDialog(): void {
     const dialogUserEditConfig = new MatDialogConfig();
@@ -95,4 +99,6 @@ export class ProfileComponent implements OnInit {
         });
     }
   }
+
+  protected readonly subscribeOn = subscribeOn;
 }

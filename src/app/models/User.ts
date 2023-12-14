@@ -12,4 +12,6 @@ export interface User {
   authorities: any;
   createdAt: any;
   bio: string;
+  subscribers: User[];
+  onWhoSubscribe: User[];
 }
