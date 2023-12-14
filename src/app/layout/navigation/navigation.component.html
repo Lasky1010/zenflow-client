@@ -1,25 +1,26 @@
 <div class="main-page">
-  <nav class="navbar fixed-top" style="color: white; ">
-    <div class="container-fluid" style="margin: 0 40px;">
+  <nav class="navbar fixed-top" style="background-color: white;">
+    <div class="container-fluid" style="height: 55px;">
       <a routerLink="/"
-         style="margin-left: 20px;font-weight: 600;font-size: 30px;text-decoration: none;color: #a62d5b;">
+         style="margin-left: 20px;font-weight: 600;font-size: 30px;text-decoration: none;color: #a62d5b;margin-top: 0rem">
         Zenflow
         <img [src]="'https://i.imgur.com/7kAZAIv.jpg'" width="40px" alt="">
       </a>
 
       <span class="spacer"></span>
 
-
       <span class="spacer"></span>
 
-      <a class="profile-link" routerLink="/profile" style="margin-top: 0.5rem">
-        <h5 style="color: #a62d5b" *ngIf="isDataLoaded">
+      <a class="profile-link" [routerLink]="['/profile',this.id]" (click)="window.location.replace('/profile/'+this.id)"
+         style="  margin-top: 0.4rem;">
+        <span style="color: #a62d5b;font-size: 25px;font-weight: 600" *ngIf="isDataLoaded">
           {{this.username}}
           <img class="profile-img" [src]="formatImage(photo) || 'https://i.imgur.com/ySPGGoI.jpg'" alt="profile photo">
-        </h5>
+        </span>
       </a>
 
-      <button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" style="color: #a62d5b" matTooltip="More" mat-icon-button>
+      <button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" style="color: #a62d5b;margin-top: -0.5rem" matTooltip="More"
+              mat-icon-button>
         <mat-icon>view_headline</mat-icon>
       </button>
       <mat-menu id="menu-item" #menu="matMenu">

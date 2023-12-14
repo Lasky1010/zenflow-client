@@ -14,6 +14,9 @@ import {NavigationComponent} from './layout/navigation/navigation.component';
 import {authInterceptorProviders} from "./service/auth-interceptor.service";
 import {authErrorInterceptorProviders} from "./service/error-interceptor.service";
 import {IndexComponent} from './layout/index/index.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {EditComponent} from './user/edit/edit.component';
+import {ProfileComponent} from './layout/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import {IndexComponent} from './layout/index/index.component';
     LoginComponent,
     SignupComponent,
     NavigationComponent,
-    IndexComponent
+    IndexComponent,
+    EditComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import {IndexComponent} from './layout/index/index.component';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatAutocompleteModule
   ],
 
   providers: [authInterceptorProviders,authErrorInterceptorProviders],

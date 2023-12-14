@@ -18,7 +18,7 @@ export class AuthService {
     )
   }
 
-  public sigUp(user:any):Observable<any>{
+  public signUp(user: any): Observable<any> {
     return this.http.post(AUTH_API+'/'+'sign-up',{
       username:user.username,
       email:user.email,

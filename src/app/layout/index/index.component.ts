@@ -4,7 +4,6 @@ import {User} from "../../models/User";
 import {CommentService} from "../../service/comment.service";
 import {PostService} from "../../service/post.service";
 import {UserService} from "../../service/user.service";
-import {NotificationService} from "../../service/notification.service";
 import {ImageService} from "../../service/image.service";
 
 @Component({
@@ -21,14 +20,9 @@ export class IndexComponent implements OnInit {
   isUserDataLoaded = false;
   showComments = false;
 
-  toggleComments() {
-    this.showComments = !this.showComments;
-  }
-
   constructor(private commentService: CommentService,
               private userService: UserService,
               private postService: PostService,
-              private notificationService: NotificationService,
               private imageService: ImageService,
   ) {
   }
@@ -56,6 +50,10 @@ export class IndexComponent implements OnInit {
         })
 
 
+  }
+
+  toggleComments() {
+    this.showComments = !this.showComments;
   }
 
   getImagesToPosts(posts: Post[]): void {
@@ -87,7 +85,6 @@ export class IndexComponent implements OnInit {
       this.postService.likePost(postId, this.user.username)
         .subscribe(() => {
           post.whoLikes.push(this.user.username);
-          this.notificationService.showMessage('Liked!');
         });
     } else {
       //@ts-ignore

@@ -15,6 +15,8 @@ export class NavigationComponent implements OnInit {
 // @ts-ignore
   username: string;
   // @ts-ignore
+  id: number;
+  // @ts-ignore
   photo: File;
 
   constructor(private tokenService: TokenStorageService,
@@ -28,6 +30,7 @@ export class NavigationComponent implements OnInit {
       this.userService.getCurrentUser()
         .subscribe(data => {
             console.log(data)
+            this.id = data.id;
             this.username = data.username;
             this.photo = data.imageData;
             this.isDataLoaded = true;
@@ -53,4 +56,5 @@ export class NavigationComponent implements OnInit {
   }
 
 
+  protected readonly window = window;
 }

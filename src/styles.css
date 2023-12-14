@@ -1,2 +1,62 @@
+@font-face {
+  font-family: 'Proxima Nova Lt';
+  src: url('src/static/fonts/ProximaNova-Light.eot');
+  src: url('src/static/fonts/ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
+  url('src/static/fonts/ProximaNova-Light.woff2') format('woff2'),
+  url('src/static/fonts/ProximaNova-Light.woff') format('woff'),
+  url('src/static/fonts/ProximaNova-Light.ttf') format('truetype'),
+  url('src/static/fonts/ProximaNova-Light.svg#ProximaNova-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('src/static/fonts/ProximaNova-ExtraBold.eot');
+  src: url('src/static/fonts/ProximaNova-ExtraBold.eot?#iefix') format('embedded-opentype'),
+  url('src/static/fonts/ProximaNova-ExtraBold.woff2') format('woff2'),
+  url('src/static/fonts/ProximaNova-ExtraBold.woff') format('woff'),
+  url('src/static/fonts/ProximaNova-ExtraBold.ttf') format('truetype'),
+  url('src/static/fonts/ProximaNova-ExtraBold.svg#ProximaNova-ExtraBold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Rg';
+  src: url('src/static/fonts/ProximaNova-Regular.eot');
+  src: url('src/static/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+  url('src/static/fonts/ProximaNova-Regular.woff2') format('woff2'),
+  url('src/static/fonts/ProximaNova-Regular.woff') format('woff'),
+  url('src/static/fonts/ProximaNova-Regular.ttf') format('truetype'),
+  url('src/static/fonts/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Proxima Nova Bl';
+  src: url('src/static/fonts/ProximaNova-Black_1.eot');
+  src: url('src/static/fonts/ProximaNova-Black_1.eot?#iefix') format('embedded-opentype'),
+  url('src/static/fonts/ProximaNova-Black_1.woff2') format('woff2'),
+  url('src/static/fonts/ProximaNova-Black_1.woff') format('woff'),
+  url('src/static/fonts/ProximaNova-Black_1.ttf') format('truetype'),
+  url('src/static/fonts/ProximaNova-Black_1.svg#ProximaNova-Black') format('svg');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: "Proxima Nova Rg";
+  font-size: 18px;
+}
+

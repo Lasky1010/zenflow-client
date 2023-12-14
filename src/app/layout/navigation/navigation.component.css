@@ -19,11 +19,13 @@
 .profile-link {
   text-decoration: none;
   color: white;
-  font-size: 20px
+  font-size: 20px;
+
 }
 
 .profile-img {
-  width: 50px;
-  border-radius: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
   border: 0.05em solid black;
 }

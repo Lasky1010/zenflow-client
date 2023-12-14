@@ -4,17 +4,20 @@
   <div class="row">
     <div class="col">
     </div>
-    <div class="col" style="margin: -10px 0 50px 0">
+    <div class="col" style="margin: 15px 0 50px 0">
       <mat-card class="post-card" *ngFor="let post of posts; let i = index">
+        <mat-divider></mat-divider>
         <!--    header   -->
         <mat-card-header style="text-align: left">
           <div mat-card-avatar>
             <img class="profile-img" [src]="formatImage(post.user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
                  alt="profile photo">
           </div>
-          <a routerLink="/profile" style="text-decoration: none;font-weight: 500;color: black">
-            <mat-card-title style="margin-top: 1.15rem;margin-left: 1rem;">{{post.user.username}} </mat-card-title>
+          <a style="text-decoration:none;font-weight: 500;color: black;font-size: 20px"
+             [routerLink]="['/profile',this.post.user.id]">
+            <mat-card-title style="margin-top: 0.95rem;margin-left: 1rem;">{{post.user.username}} </mat-card-title>
           </a>
+
         </mat-card-header>
 
         <!--    body   -->
@@ -22,49 +25,48 @@
 
         <mat-card-content style="text-align: start;">
           <p style="margin-top: 5px ">
-            <a routerLink="/profile"
-               style="text-decoration: none;font-weight: 500;color: black"><span> {{post.user.username}}</span></a>
+            <a
+              style="text-decoration: none;font-weight: 500;color: black"><span> {{post.user.username}}</span></a>
             <span> {{post.description}}</span>
           </p>
 
         </mat-card-content>
 
         <mat-card-actions align="start">
-
+          <!--  Like  -->
           <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)">
             <mat-icon [ngClass]="post.whoLikes.indexOf(user.username) != -1 ? 'is-liked' : 'not-liked'">favorite
             </mat-icon>
           </button>
           {{post.whoLikes.length}}
         </mat-card-actions>
-        <!--    comments   -->
+        <!--   Comments   -->
         <div style="text-align: left;margin-left: 10px">
             <span *ngIf="post.comments.length<3;else elseBlock">
               <span *ngFor="let comment of post.comments">
-                <span style="font-weight: 500;margin-bottom: 5px">{{comment.username}}:</span> {{comment.message}}<br>
+                <span class="comment-username" style=";margin-bottom: 5px">{{comment.username}}
+                  :</span> {{comment.message}}<br>
               </span>
             </span>
           <ng-template #elseBlock>
               <span *ngIf="!showComments">
-                 <a routerLink="/profile" style="text-decoration: none;font-weight: 500;color: black">
+                 <a style="text-decoration: none;font-weight: 500;color: black">
                 <span style="font-weight: 500">
                 {{post.comments.at(post.comments.length - 1)?.username}}:
               </span></a>
                 {{post.comments.at(post.comments.length - 1)?.message}}
               </span><br>
-            <a *ngIf="!showComments" class="all-comments" (click)="toggleComments()">Просмотреть все
-              комментарии({{post.comments.length}})</a>
+            <a *ngIf="!showComments" class="all-comments" (click)="toggleComments()">Show all
+              comments({{post.comments.length}})</a>
             <br>
             <span *ngIf="showComments">
                 <span *ngFor="let comment of post.comments">
-                  <span style=";margin-bottom: 5px"> <a routerLink="/profile"
-                                                        style="text-decoration: none;font-weight: 500;color: black">{{comment.username}}</a>:</span> {{comment.message}}
+                  <span style="text-decoration: none;font-weight: 500;color: black;margin-bottom: 5px">
+                    <a>{{comment.username}}</a>:</span> {{comment.message}}
                   <br>
                 </span>
-                 <p><a class="all-comments" (click)="toggleComments();!showComments">Скрыть все комментарии</a></p>
-
+                 <p><a class="all-comments" (click)="toggleComments();!showComments">Hide comments</a></p>
               </span>
-
           </ng-template>
 
         </div>
@@ -73,13 +75,11 @@
           <mat-label>Leave a comment...</mat-label>
           <input (keyup.enter)="postComment($event.target.value, post.id, i)" matInput #message maxlength="128">
         </mat-form-field>
-        <!--<div class="input-group mb-3">
-          <input  (keyup.enter)="postComment($event.target.value, post.id, i)" matInput #message maxlength="128"class="form-control" placeholder="Leave a comment..." aria-label="Leave a comment...">
-        </div>-->
+
       </mat-card>
+
     </div>
     <div class="col">
-
     </div>
   </div>
 </div>
