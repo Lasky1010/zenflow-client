@@ -41,7 +41,7 @@
         <div class="col-md-auto">
           <h2>{{user.username}}</h2>
           <h6 style="font-style: italic">{{user.name}}</h6>
-          <h6>{{user.bio}}</h6>
+
         </div>
         <div class="col-md-auto">
           <h6 style="margin-top: 10px">
@@ -53,6 +53,13 @@
             Subscribed: {{user.onWhoSubscribe.length}}
           </h6>
         </div>
+        <div class="col-md-auto">
+          <input value="Email" style="margin-top: 5px;border: none;background: white;text-decoration: underline"
+                 id="showEmail" (click)="change()" type="reset">
+        </div>
+      </div>
+      <div class="row">
+        <h6>{{user.bio}}</h6>
       </div>
     </div>
 

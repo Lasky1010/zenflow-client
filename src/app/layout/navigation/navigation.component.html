@@ -12,7 +12,7 @@
       <span class="spacer"></span>
 
       <a class="profile-link" [routerLink]="['/profile',this.id]" (click)="window.location.replace('/profile/'+this.id)"
-         style="  margin-top: 0.4rem;">
+         style="  margin-top: 0rem;">
         <span style="color: #a62d5b;font-size: 25px;font-weight: 600" *ngIf="isDataLoaded">
           {{this.username}}
           <img class="profile-img" [src]="formatImage(photo) || 'https://i.imgur.com/ySPGGoI.jpg'" alt="profile photo">

@@ -1,1 +1,48 @@
-<p>edit works!</p>
+<div class="container-fluid">
+  <p style="margin-top: 10px">Edit User Profile</p>
+  <form [formGroup]="profileEditForm">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput
+               formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput pattern="^\S{3,20}$"
+               formControlName="username" [placeholder]="getPlaceholder('username')">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+
+        <input matInput email type="email" ngModel
+               formControlName="email" [placeholder]="getPlaceholder('email')">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput pattern="^(?=.*\d)(?=.*[A-Z])(?!.*\s).{8,16}$"
+               formControlName="password">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Biography</mat-label>
+        <input matInput pattern="^\S{0,600}$"
+               formControlName="bio">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button (click)="closeDialog()" style="width: 50%;"
+                mat-flat-button mat-dialog-close disableRipple>
+          Cancel
+        </button>
+      </div>
+      <div class="col">
+        <button color="primary" mat-flat-button style="width: 50%;" [disabled]="profileEditForm.invalid"
+                (click)="submit()" disableRipple>
+          Update
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -9,7 +9,6 @@ import {UserService} from '../../service/user.service';
 import {ImageService} from "../../service/image.service";
 import {ActivatedRoute} from "@angular/router";
 import {EditComponent} from "../../user/edit/edit.component";
-import {subscribeOn} from "rxjs";
 
 
 @Component({
@@ -64,10 +63,20 @@ export class ProfileComponent implements OnInit {
     this.isSubscribed = !this.isSubscribed;
   }
 
+  change() {
+    let elem = document.getElementById("showEmail");
+    // @ts-ignore
+    if (elem.value == "Email") elem.value = this.user.email;
+    else { // @ts-ignore
+      elem.value = "Email";
+    }
+  }
+
 
   openEditDialog(): void {
     const dialogUserEditConfig = new MatDialogConfig();
-    dialogUserEditConfig.width = '400px';
+    dialogUserEditConfig.width = '350px';
+    dialogUserEditConfig.height = '530px';
     dialogUserEditConfig.data = {
       user: this.user
     };
@@ -100,5 +109,4 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  protected readonly subscribeOn = subscribeOn;
 }
