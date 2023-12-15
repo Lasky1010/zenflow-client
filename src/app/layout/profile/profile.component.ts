@@ -18,16 +18,19 @@ import {EditComponent} from "../../user/edit/edit.component";
 })
 export class ProfileComponent implements OnInit {
 
-  isCurrentUser = true;
+
+  isSubscribed = false;
+  isCurrentUser = false;
   isUserDataLoaded = false;
   //@ts-ignore
   user: User;
   //@ts-ignore
+  mainUser: User;
+  //@ts-ignore
   selectedFile: File;
   //@ts-ignore
-  previewImgURL: any;
 
-  isSubscribed = false;
+  previewImgURL: any;
 
   constructor(private tokenService: TokenStorageService,
               private postService: PostService,
@@ -36,31 +39,58 @@ export class ProfileComponent implements OnInit {
               private imageService: ImageService,
               private userService: UserService,
               private router: ActivatedRoute) {
+
   }
 
   ngOnInit(): void {
+
     this.router.paramMap.subscribe(() => {
       const userId = Number(this.router.snapshot.paramMap.get('userId'));
       this.userService.getCurrentUser()
         .subscribe(data => {
-          this.user = data;
-          this.isUserDataLoaded = true;
-          if (userId != this.user.id) {
+          console.log(data);
+          this.mainUser = data;
+          if (this.mainUser.id == userId) {
+            this.isCurrentUser = true;
+            this.user = this.mainUser;
+            this.isUserDataLoaded = true;
+          } else {
             this.userService.getUserById(userId)
               .subscribe(data => {
                 this.user = data;
-                this.isCurrentUser = false;
                 this.isUserDataLoaded = true;
+                this.isCurrentUser = false;
               });
           }
-
+        }, error => {
+          console.log(error)
         });
-      console.log(userId);
     });
   }
 
-  subscribe(): void {
-    this.isSubscribed = !this.isSubscribed;
+  getIsSubscribed(): boolean {
+    for (let sub of this.user.subscribers) {
+      if (sub.username === this.mainUser.username) {
+        this.isSubscribed = true;
+        break;
+      } else {
+        this.isSubscribed = false;
+        break;
+      }
+    }
+    return this.isSubscribed;
+  }
+
+  subscribe(id: number): void {
+
+    this.userService.subscribe(id).subscribe(data => {
+        this.user = data;
+        this.isSubscribed = !this.isSubscribed;
+        console.log(this.user)
+      },
+      error => {
+        console.log(error)
+      });
   }
 
   change() {

@@ -26,10 +26,12 @@
 
       <!-- Subscribe -->
       <ng-template [ngIf]="!isCurrentUser">
-        <button mat-flat-button color="accent" (click)="subscribe()" *ngIf="!isSubscribed;else unsubBlock">Subscribe
+        <button mat-flat-button color="accent" (click)="subscribe(this.user.id)"
+                *ngIf="getIsSubscribed()==false;else unsubBlock">Subscribe
         </button>
         <ng-template #unsubBlock>
-          <button mat-flat-button color="warn" (click)="subscribe()" *ngIf="isSubscribed;else unsubBlock">Unsubscribe
+          <button mat-flat-button color="warn" (click)="subscribe(this.user.id)" *ngIf="getIsSubscribed()==true">
+            Unsubscribe
           </button>
         </ng-template>
       </ng-template>

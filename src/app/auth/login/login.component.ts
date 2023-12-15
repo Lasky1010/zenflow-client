@@ -52,9 +52,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['']);
           window.location.reload();
         },
-        (error: { message: string; }) => {
+        error => {
           console.log(error);
-          this.notificationService.showMessage(error.message);
+          this.notificationService.showMessage('Username or password is incorrect');
+
         });
   }
 

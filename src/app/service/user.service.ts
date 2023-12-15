@@ -27,6 +27,10 @@ export class UserService {
   getUsernameByUsername(username: any): Observable<any> {
     return this.http.get(USER_API + '/' + username);
   }
+
+  subscribe(id: number): Observable<any> {
+    return this.http.post(USER_API + '/subscribe/' + id, null);
+  }
 }
 
 const USER_API = 'http://localhost:8080/api/user';
