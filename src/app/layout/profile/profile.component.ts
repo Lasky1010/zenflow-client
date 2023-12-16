@@ -11,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 import {EditComponent} from "../../user/edit/edit.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Post} from "../../models/Post";
+import {PostDialogComponent} from "../../post/postdialog/post-dialog.component";
 
 
 @Component({
@@ -76,6 +77,19 @@ export class ProfileComponent implements OnInit {
         });
     });
   }
+
+  openPostDialog(post: Post): void {
+    const dialogUserEditConfig = new MatDialogConfig();
+    dialogUserEditConfig.width = '1000px';
+    dialogUserEditConfig.height = '640px';
+    dialogUserEditConfig.data = {
+      post: post,
+      mainUser: this.mainUser
+    };
+    this.dialog.open(PostDialogComponent, dialogUserEditConfig);
+  }
+
+
 
   getImagesToPosts(posts: Post[]): void {
     posts.forEach(p => {

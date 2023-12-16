@@ -18,6 +18,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {EditComponent} from './user/edit/edit.component';
 import {ProfileComponent} from './layout/profile/profile.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import {PostDialogComponent} from './post/postdialog/post-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     NavigationComponent,
     IndexComponent,
     EditComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostDialogComponent
   ],
   imports: [
     MatGridListModule,

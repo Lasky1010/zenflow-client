@@ -74,8 +74,9 @@
 
 
     <mat-grid-list cols="3">
-      <mat-grid-tile *ngFor="let photo of user.posts">
-        <img mat-card-image [src]="formatImage(photo.imageData)" alt="Photo" width="400px" style="padding: 0 1rem">
+      <mat-grid-tile *ngFor="let post of user.posts">
+        <img mat-card-image (click)="openPostDialog(post)" [src]="formatImage(post.imageData)" alt="Photo" width="400px"
+             height="400px" style="padding: 0 1rem">
       </mat-grid-tile>
     </mat-grid-list>
   </div>

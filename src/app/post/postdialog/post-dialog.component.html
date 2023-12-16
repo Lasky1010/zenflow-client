@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <img mat-card-image [src]="formatImage(this.data.post.imageData)" alt="Photo" width="600px" height="600px"
+           style="margin-top:20px;margin-bottom: 10px">
+    </div>
+    <div class="col">
+      <!--  <div class="row">
+          <div class="col-md-auto"><img [src]="formatImage(this.data.user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'" alt="img" style="width: 40px;border: 1px solid black;margin-top: 1.5rem;border-radius: 50%"></div>
+          <div class="col " style="margin-top: 2rem">  {{this.data.user.username}}</div>
+        </div>-->
+      <mat-card class="post-card">
+        <!--    header   -->
+        <mat-card-header style="text-align: left">
+          <div mat-card-avatar>
+            <img style="width: 40px;border: 1px solid black;border-radius: 50%"
+                 [src]="formatImage(this.data.post.user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
+                 alt="profile photo">
+          </div>
+          <span style="margin-top: 0.32rem;margin-left:0.3rem;font-weight: 500;color: black;font-size: 20px">
+          <mat-card-title>{{this.data.post.user.username}} </mat-card-title>
+        </span>
+
+        </mat-card-header>
+
+        <mat-card-content style="text-align: start;">
+          <p style="margin-top: 5px ">
+            <a
+              style="text-decoration: none;font-weight: 500;color: black"></a>
+            <span> {{this.data.post.description}}</span>
+          </p>
+
+        </mat-card-content>
+
+        <mat-card-actions align="start">
+          <!--  Like  -->
+          <button mat-button (click)="likePost()">
+            <mat-icon
+              [ngClass]="this.data.post.whoLikes.indexOf(this.data.mainUser.username) != -1 ? 'is-liked' : 'not-liked'">
+              favorite
+            </mat-icon>
+          </button>
+          {{this.data.post.whoLikes.length}}
+        </mat-card-actions>
+        <mat-form-field class="w-100">
+          <mat-label>Leave a comment...</mat-label>
+          <input (keyup.enter)="postComment($event.target.value)" matInput #message maxlength="128">
+        </mat-form-field>
+        <!--   Comments   -->
+        <mat-card-content>
+          <div style="text-align: left;margin-left: 10px">
+
+              <span *ngFor="let comment of this.data.post.comments">
+                <span class="comment-username" style=";margin-bottom: 5px">{{comment.username}}
+                  :</span> {{comment.message}}<br>
+              </span>
+          </div>
+        </mat-card-content>
+
+
+      </mat-card>
+    </div>
+  </div>
+</div>

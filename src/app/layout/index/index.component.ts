@@ -99,10 +99,6 @@ export class IndexComponent implements OnInit {
   }
 
 
-  clearField() {
-
-  }
-
   //@ts-ignore
   postComment(message: string, postId: number | undefined, postIndex: number): void {
     const post = this.posts[postIndex];

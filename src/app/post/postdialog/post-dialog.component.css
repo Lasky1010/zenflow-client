@@ -1,0 +1,47 @@
+.profile-img {
+  align-content: start;
+  margin: 8px 0 8px 8px;
+  width: 40px;
+  border-radius: 50%;
+  border: 0.05em solid black;
+}
+
+.mat-card.post-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card.post-card > .mat-card-title-group {
+  display: block;
+}
+
+.mat-card.post-card > .mat-card-content {
+  overflow-y: auto;
+}
+
+.mat-card.post-card > .mat-card-actions {
+  overflow-y: auto;
+}
+
+.post-card {
+  display: inline;
+
+}
+
+.is-liked {
+  color: #8c3023;
+}
+
+.not-liked {
+  color: grey;
+}
+
+.all-comments {
+  color: #565555;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
