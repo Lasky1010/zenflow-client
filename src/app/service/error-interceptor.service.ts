@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {TokenStorageService} from '../service/token-storage.service';
-import {NotificationService} from '../service/notification.service';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import {catchError} from 'rxjs/operators';
 export class ErrorInterceptorService implements HttpInterceptor {
 
   constructor(private tokenService: TokenStorageService,
-              private notificationService: NotificationService) {
+              private snackbar: MatSnackBar) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -20,10 +20,8 @@ export class ErrorInterceptorService implements HttpInterceptor {
         this.tokenService.logOut();
         window.location.reload();
       }
-
-
       const error = err.error.message || err.statusText;
-      this.notificationService.showMessage(error);
+      this.snackbar.open(error);
       return throwError(error);
     }));
   }

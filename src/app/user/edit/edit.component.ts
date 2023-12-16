@@ -2,8 +2,8 @@ import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {UserService} from "../../service/user.service";
-import {NotificationService} from "../../service/notification.service";
 import {User} from "../../models/User";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 class EditUserComponent {
 }
@@ -19,10 +19,10 @@ export class EditComponent {
 
   constructor(private dialogRef: MatDialogRef<EditUserComponent>,
               private fb: FormBuilder,
-              private notificationService: NotificationService,
               // @ts-ignore
               @Inject(MAT_DIALOG_DATA) public data,
-              private userService: UserService) {
+              private userService: UserService,
+              private snackbar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -58,7 +58,10 @@ export class EditComponent {
     void {
     this.userService.updateUser(this.updateUser())
       .subscribe(() => {
-        this.notificationService.showMessage('User updated successfully');
+        this.snackbar.open('User updated successfully', undefined, {
+          duration: 2000
+        })
+
         this.dialogRef.close();
         window.location.reload()
       });

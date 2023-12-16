@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
-import {NotificationService} from '../../service/notification.service';
+
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-signup',
@@ -17,8 +18,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private notificationService: NotificationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar
   ) {
   }
 
@@ -46,10 +47,14 @@ export class SignupComponent implements OnInit {
       confirmPassword: this.signupForm.value.confirmPassword,
     }).subscribe(data => {
       console.log(data);
-      this.notificationService.showMessage('Successfully Registered!');
+      this.snackbar.open('Successfully Registered', undefined, {
+        duration: 2000
+      });
       this.router.navigate(['login']);
     }, error => {
-      this.notificationService.showMessage('Something went wrong during registration');
+      this.snackbar.open('Something went wrong during registration', undefined, {
+        duration: 2000
+      });
     });
   }
 

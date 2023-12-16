@@ -3,12 +3,13 @@ import {User} from '../../models/User';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {PostService} from '../../service/post.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {NotificationService} from '../../service/notification.service';
+
 
 import {UserService} from '../../service/user.service';
 import {ImageService} from "../../service/image.service";
 import {ActivatedRoute} from "@angular/router";
 import {EditComponent} from "../../user/edit/edit.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -35,7 +36,7 @@ export class ProfileComponent implements OnInit {
   constructor(private tokenService: TokenStorageService,
               private postService: PostService,
               private dialog: MatDialog,
-              private notificationService: NotificationService,
+              private snackbar: MatSnackBar,
               private imageService: ImageService,
               private userService: UserService,
               private router: ActivatedRoute) {
@@ -134,7 +135,9 @@ export class ProfileComponent implements OnInit {
     if (this.selectedFile != null) {
       this.imageService.uploadImageToUser(this.selectedFile)
         .subscribe(() => {
-          this.notificationService.showMessage('Profile Image updated successfully');
+          this.snackbar.open('Profile Image updated successfully', undefined, {
+            duration: 2000
+          });
         });
     }
   }

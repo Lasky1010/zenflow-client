@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {Router} from '@angular/router';
-import {NotificationService} from '../../service/notification.service';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -18,9 +18,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private notificationService: NotificationService,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar) {
     if (this.tokenStorage.getUser()) {
       this.router.navigate(['']);
     }
@@ -48,13 +48,14 @@ export class LoginComponent implements OnInit {
           console.log(data);
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
-          this.notificationService.showMessage('Successfully logged in');
           this.router.navigate(['']);
           window.location.reload();
         },
         error => {
           console.log(error);
-          this.notificationService.showMessage('Username or password is incorrect');
+          this.snackbar.open(error, undefined, {
+            duration: 2000
+          })
 
         });
   }
