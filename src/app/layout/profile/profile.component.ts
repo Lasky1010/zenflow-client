@@ -10,12 +10,13 @@ import {ImageService} from "../../service/image.service";
 import {ActivatedRoute} from "@angular/router";
 import {EditComponent} from "../../user/edit/edit.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Post} from "../../models/Post";
 
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
 
@@ -63,9 +64,26 @@ export class ProfileComponent implements OnInit {
                 this.isCurrentUser = false;
               });
           }
+          this.postService.getPostsForUserId(userId).subscribe(data => {
+            console.log(data);
+            this.user.posts = data;
+            this.getImagesToPosts(this.user.posts)
+          }, error => {
+            console.log(error)
+          })
         }, error => {
           console.log(error)
         });
+    });
+  }
+
+  getImagesToPosts(posts: Post[]): void {
+    posts.forEach(p => {
+      //@ts-ignore
+      this.imageService.getPostImage(p.id)
+        .subscribe(data => {
+          p.imageData = data.imageData;
+        })
     });
   }
 

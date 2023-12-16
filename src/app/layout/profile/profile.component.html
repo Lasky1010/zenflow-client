@@ -27,10 +27,10 @@
       <!-- Subscribe -->
       <ng-template [ngIf]="!isCurrentUser">
         <button mat-flat-button color="accent" (click)="subscribe(this.user.id)"
-                *ngIf="getIsSubscribed()==false;else unsubBlock">Subscribe
+                *ngIf="!getIsSubscribed();else unsubBlock">Subscribe
         </button>
         <ng-template #unsubBlock>
-          <button mat-flat-button color="warn" (click)="subscribe(this.user.id)" *ngIf="getIsSubscribed()==true">
+          <button mat-flat-button color="warn" (click)="subscribe(this.user.id)" *ngIf="getIsSubscribed()">
             Unsubscribe
           </button>
         </ng-template>
@@ -47,12 +47,17 @@
         </div>
         <div class="col-md-auto">
           <h6 style="margin-top: 10px">
-            Subscribers: {{user.subscribers.length}}
+            <span style="font-weight: 600"> {{user.subscribers.length}}</span> Subscribers
           </h6>
         </div>
         <div class="col-md-auto">
           <h6 style="margin-top: 10px">
-            Subscribed: {{user.onWhoSubscribe.length}}
+            <span style="font-weight: 600">{{user.onWhoSubscribe.length}}</span> Subscribed
+          </h6>
+        </div>
+        <div class="col-md-auto">
+          <h6 style="margin-top: 10px">
+            <span style="font-weight: 600">{{user.posts.length}}</span> Posts
           </h6>
         </div>
         <div class="col-md-auto">
@@ -65,8 +70,14 @@
       </div>
     </div>
 
-    <mat-divider style="margin: 2rem 0"></mat-divider>
+    <mat-divider style="margin: 20px"></mat-divider>
 
+
+    <mat-grid-list cols="3">
+      <mat-grid-tile *ngFor="let photo of user.posts">
+        <img mat-card-image [src]="formatImage(photo.imageData)" alt="Photo" width="400px" style="padding: 0 1rem">
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
 
 </div>

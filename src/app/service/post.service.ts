@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Post} from "../models/Post";
@@ -23,6 +23,11 @@ export class PostService {
   getCurrentUserPosts():Observable<any> {
     return this.http.get(POST_API+'/user')
   }
+
+  getPostsForUserId(id: number): Observable<any> {
+    return this.http.get(POST_API + '/' + id);
+  }
+
 
   deletePost(id:number) {
     return this.http.delete(POST_API+'/'+id);

@@ -17,6 +17,7 @@ import {IndexComponent} from './layout/index/index.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {EditComponent} from './user/edit/edit.component';
 import {ProfileComponent} from './layout/profile/profile.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {ProfileComponent} from './layout/profile/profile.component';
     ProfileComponent
   ],
   imports: [
+    MatGridListModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -36,7 +38,8 @@ import {ProfileComponent} from './layout/profile/profile.component';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatGridListModule
   ],
 
   providers: [authInterceptorProviders,authErrorInterceptorProviders],
