@@ -43,7 +43,7 @@
         <!--   Comments   -->
         <div style="text-align: left;margin-left: 10px">
             <span *ngIf="post.comments.length<3;else elseBlock">
-              <span *ngFor="let comment of post.comments">
+              <span *ngFor="let comment of post.comments.reverse()">
                 <span class="comment-username" style=";margin-bottom: 5px">{{comment.username}}
                   :</span> {{comment.message}}<br>
               </span>
@@ -59,14 +59,16 @@
             <a *ngIf="!showComments" class="all-comments" (click)="toggleComments()">Show all
               comments({{post.comments.length}})</a>
             <br>
-            <span *ngIf="showComments">
-                <span *ngFor="let comment of post.comments">
+            <div class="comments">
+              <span *ngIf="showComments">
+                <span *ngFor="let comment of post.comments.reverse()">
                   <span style="text-decoration: none;font-weight: 500;color: black;margin-bottom: 5px">
                     <a>{{comment.username}}</a>:</span> {{comment.message}}
                   <br>
                 </span>
-                 <p><a class="all-comments" (click)="toggleComments();!showComments">Hide comments</a></p>
               </span>
+            </div>
+            <p><a class="all-comments" (click)="toggleComments();!showComments">Hide comments</a></p>
           </ng-template>
 
         </div>

@@ -6,27 +6,28 @@
   border: 0.05em solid black;
 }
 
-.mat-card.post-card {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.mat-card.post-card > .mat-card-title-group {
-  display: block;
-}
-
-.mat-card.post-card > .mat-card-content {
+.comments {
+  text-align: left;
+  margin-left: 10px;
   overflow-y: auto;
+  height: 390px;
 }
 
-.mat-card.post-card > .mat-card-actions {
-  overflow-y: auto;
+.comments::-webkit-scrollbar {
+  width: 12px;
+}
+
+.comments::-webkit-scrollbar-track {
+  background: white;
+}
+
+.comments::-webkit-scrollbar-thumb {
+  background-color: #ad6a84;
+  border-radius: 20px;
 }
 
 .post-card {
   display: inline;
-
 }
 
 .is-liked {
@@ -36,12 +37,3 @@
 .not-liked {
   color: grey;
 }
-
-.all-comments {
-  color: #565555;
-  font-size: 15px;
-  text-decoration: none;
-  cursor: pointer;
-
-}
-
