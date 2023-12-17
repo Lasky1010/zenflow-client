@@ -117,13 +117,16 @@ export class ProfileComponent implements OnInit {
   subscribe(id: number): void {
 
     this.userService.subscribe(id).subscribe(data => {
+
         this.user = data;
         this.isSubscribed = !this.isSubscribed;
-        console.log(this.user)
+        window.location.reload()
       },
       error => {
         console.log(error)
       });
+
+
   }
 
   change() {

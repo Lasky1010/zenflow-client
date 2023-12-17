@@ -60,3 +60,15 @@ body {
   font-size: 18px;
 }
 
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: white;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ad6a84;
+  border-radius: 20px;
+}
