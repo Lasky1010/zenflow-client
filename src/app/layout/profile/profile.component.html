@@ -60,10 +60,12 @@
             <span style="font-weight: 600">{{user.posts.length}}</span> Posts
           </h6>
         </div>
-        <div class="col-md-auto">
-          <input value="Email" style="margin-top: 5px;border: none;background: white;text-decoration: underline"
-                 id="showEmail" (click)="change()" type="reset">
-        </div>
+        <ng-template [ngIf]="isCurrentUser">
+          <div class="col-md-auto">
+            <input value="Email" style="margin-top: 5px;border: none;background: white;text-decoration: underline"
+                   id="showEmail" (click)="change()" type="reset">
+          </div>
+        </ng-template>
       </div>
       <div class="row">
         <h6>{{user.bio}}</h6>
