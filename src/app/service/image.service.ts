@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 const IMAGE_API = 'http://localhost:8080/api/image';
@@ -17,9 +17,9 @@ export class ImageService {
   }
 
   uploadImageToPost(file:File,id:number):Observable<any>{
-    const uploadData=new FormData();
-    uploadData.append('file',file)
-    return this.http.post(IMAGE_API+'/'+id,file);
+    const uploadData = new FormData();
+    uploadData.set('file', file, 'file');
+    return this.http.post(IMAGE_API + '/' + id, uploadData);
   }
 
   getProfileImage():Observable<any>{

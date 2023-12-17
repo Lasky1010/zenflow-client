@@ -46,7 +46,8 @@
 .profile-img {
   align-content: start;
   margin: 8px 0 8px 8px;
-  width: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 35px;
   border: 0.05em solid black;
 }

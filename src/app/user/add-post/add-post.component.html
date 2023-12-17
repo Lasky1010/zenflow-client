@@ -1,0 +1,41 @@
+<app-navigation></app-navigation>
+<div class="container-fluid">
+  <div class="row">
+
+    <h2>Create Post</h2>
+    <form [formGroup]="postForm">
+      <div class="row">
+        <img class="post-image"
+             [src]="previewImgURL || 'https://spb-pochin.ru/wp-content/uploads/2023/08/placeholder.png'" alt="post img">
+      </div>
+      <div style="text-align: center">
+        <input type="file"
+               style="display: none"
+               #fileInput
+               (change)="onFileSelected($event)">
+
+        <button mat-button (click)="fileInput.click()">Pick File</button>
+      </div>
+
+
+      <div style="text-align: center">
+        <mat-form-field class="w-50" appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput
+                 pattern=".{0,150}$"
+                 formControlName="description">
+        </mat-form-field>
+      </div>
+
+
+      <div style="text-align: center">
+        <button mat-flat-button color="primary" [disabled]="postForm.invalid" (click)="submit()">
+          Create Post
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+
+</div>

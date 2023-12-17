@@ -76,9 +76,23 @@
 
 
     <mat-grid-list cols="3">
-      <mat-grid-tile *ngFor="let post of user.posts">
-        <img mat-card-image (click)="openPostDialog(post)" [src]="formatImage(post.imageData)" alt="Photo" width="400px"
-             height="400px" style="padding: 0 1rem">
+      <mat-grid-tile class="hover-text" *ngFor="let post of user.posts">
+        <img mat-card-image class="post-image" (click)="openPostDialog(post)" [src]="formatImage(post.imageData)"
+             alt="Photo">
+        <span class="on-image" style="position: absolute">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill"
+               viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+          </svg>
+          {{post.whoLikes.length}}
+          <span style="margin: 0 5px"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+               class="bi bi-chat-right-fill" viewBox="0 0 16 16">
+            <path
+              d="M14 0a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+          </svg>
+          {{post.comments.length}}
+        </span>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
