@@ -54,7 +54,15 @@
         <div class="comments">
               <span *ngFor="let comment of this.data.post.comments.reverse()">
                 <span class="comment-username" style=";margin-bottom: 5px">{{comment.username}}
-                  :</span> {{comment.message}}<br>
+                  :</span>
+                <span
+                  *ngIf="data.post.user.username===data.mainUser.username || comment.username===data.mainUser.username;else commBlock">
+                  <span (click)="showCommentMenu(comment.id)">{{comment.message}}
+                  </span>
+                </span>
+                <ng-template #commBlock>
+                  {{comment.message}}
+                </ng-template><br>
               </span>
         </div>
       </mat-card>

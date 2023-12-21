@@ -35,7 +35,10 @@ export class AddPostComponent implements OnInit {
 
   ngOnInit(): void {
     //@ts-ignore
-    this.mainUser = this.userService.getCurrentUser();
+    this.userService.getCurrentUser().subscribe(data => {
+        this.mainUser = data;
+      }
+    )
     this.postForm = this.createPostForm();
 
   }
@@ -48,7 +51,6 @@ export class AddPostComponent implements OnInit {
   }
 
   submit(): void {
-
     this.postService.createPost({
       //@ts-ignore
       description: this.postForm.value.description
@@ -57,11 +59,11 @@ export class AddPostComponent implements OnInit {
       console.log(data);
       if (this.createdPost.id != null) {
         this.imageService.uploadImageToPost(this.selectedFile, this.createdPost.id)
-          .subscribe(() => {
-            this.snackbar.open('Post created successfully');
-            this.isPostCreated = true;
-            this.router.navigate(['/profile/' + this.mainUser.id]);
+          .subscribe((data) => {
           });
+        this.snackbar.open('Post created successfully');
+        this.isPostCreated = true;
+        this.router.navigate(['profile/' + this.mainUser.id]);
       }
     });
   }

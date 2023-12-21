@@ -1,8 +1,9 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {Post} from "../../models/Post";
 import {CommentService} from "../../service/comment.service";
 import {PostService} from "../../service/post.service";
+import {CommentDialogComponent} from "../comment-dialog/comment-dialog.component";
 
 
 @Component({
@@ -11,11 +12,13 @@ import {PostService} from "../../service/post.service";
   styleUrls: ['./post-dialog.component.css']
 })
 export class PostDialogComponent {
-  constructor(private dialogRef: MatDialogRef<PostDialogComponent>,
+  constructor(private dialogRef: MatDialogRef<CommentDialogComponent>,
+              private postDialogRef: MatDialogRef<PostDialogComponent>,
               // @ts-ignore
               @Inject(MAT_DIALOG_DATA) public data: { post, mainUser },
               private commentService: CommentService,
-              private postService: PostService
+              private postService: PostService,
+              private dialog: MatDialog
   ) {
     this.getCommentsToPost(this.data.post.comments);
   }
@@ -55,6 +58,18 @@ export class PostDialogComponent {
           }
         });
     }
+  }
+
+  showCommentMenu(id: number | undefined): void {
+    const dialogUserEditConfig = new MatDialogConfig();
+    dialogUserEditConfig.width = '200x';
+    dialogUserEditConfig.height = '100px';
+    dialogUserEditConfig.data = {
+      id: id,
+      mainUser: this.data.mainUser,
+      post: this.data.post
+    };
+    this.dialog.open(CommentDialogComponent, dialogUserEditConfig);
   }
 
 

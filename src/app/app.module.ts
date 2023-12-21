@@ -20,6 +20,7 @@ import {ProfileComponent} from './layout/profile/profile.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {PostDialogComponent} from './post/postdialog/post-dialog.component';
 import {AddPostComponent} from './user/add-post/add-post.component';
+import {CommentDialogComponent} from './post/comment-dialog/comment-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {AddPostComponent} from './user/add-post/add-post.component';
     EditComponent,
     ProfileComponent,
     PostDialogComponent,
-    AddPostComponent
+    AddPostComponent,
+    CommentDialogComponent
   ],
   imports: [
     MatGridListModule,
