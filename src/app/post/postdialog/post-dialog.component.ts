@@ -60,6 +60,12 @@ export class PostDialogComponent {
     }
   }
 
+
+  deletePost() {
+    this.postService.deletePost(this.data.post.id).subscribe(data => {
+    })
+    window.location.reload()
+  }
   showCommentMenu(id: number | undefined): void {
     const dialogUserEditConfig = new MatDialogConfig();
     dialogUserEditConfig.width = '200x';

@@ -23,8 +23,8 @@ export class CommentDialogComponent {
     this.commentService.deleteComment(this.data.id).subscribe(data => {
       this.snackBar.open('Comment was deleted')
     })
+    this.data.post.comments = this.data.post.comments.filter((comment: { id: any; }) => comment.id !== this.data.id);
     this.dialogRef.close()
-    window.location.reload()
 
   }
 

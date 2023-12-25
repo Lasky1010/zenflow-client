@@ -74,7 +74,6 @@
 
     <mat-divider style="margin: 20px"></mat-divider>
 
-
     <mat-grid-list cols="3">
       <mat-grid-tile class="hover-text" *ngFor="let post of user.posts">
         <img mat-card-image class="post-image" (click)="openPostDialog(post)" [src]="formatImage(post.imageData)"

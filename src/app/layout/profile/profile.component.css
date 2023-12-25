@@ -20,7 +20,7 @@
 .post-image {
   width: 400px;
   height: 400px;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
 }
 
 .post-image:hover {
