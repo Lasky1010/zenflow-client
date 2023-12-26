@@ -63,8 +63,12 @@ export class PostDialogComponent {
 
   deletePost() {
     this.postService.deletePost(this.data.post.id).subscribe(data => {
+      console.log(data)
+      console.log(this.data.mainUser.posts.indexOf(this.data.post))
+      this.data.mainUser.posts.splice(this.data.mainUser.posts.indexOf(this.data.post), 1)
+      this.dialogRef.close()
     })
-    window.location.reload()
+
   }
   showCommentMenu(id: number | undefined): void {
     const dialogUserEditConfig = new MatDialogConfig();

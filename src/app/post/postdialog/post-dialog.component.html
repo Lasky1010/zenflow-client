@@ -16,9 +16,10 @@
           <span style="margin-top: 0.32rem;margin-left:0.3rem;font-weight: 500;color: black;font-size: 20px">
           <mat-card-title>{{this.data.post.user.username}} </mat-card-title>
         </span>
+
           <span *ngIf="this.data.mainUser.username===this.data.post.user.username"
-                style="margin-left:50%;cursor: pointer" (click)="deletePost()">
-            Delete post
+                class="button-delete" (click)="deletePost()">
+             Delete post
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle"
                  viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>

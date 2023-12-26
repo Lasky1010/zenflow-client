@@ -31,4 +31,9 @@
   display: inline;
 }
 
+.button-delete {
+  margin-top: 0.5rem;
+  margin-left: 6rem;
+  cursor: pointer
+}
 

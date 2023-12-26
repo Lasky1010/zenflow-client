@@ -117,10 +117,9 @@ export class ProfileComponent implements OnInit {
   subscribe(id: number): void {
 
     this.userService.subscribe(id).subscribe(data => {
-
         this.user = data;
         this.isSubscribed = !this.isSubscribed;
-        window.location.reload()
+        this.getImagesToPosts(this.user.posts)
       },
       error => {
         console.log(error)

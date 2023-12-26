@@ -53,15 +53,12 @@ export class EditComponent {
     });
   }
 
-  submit()
-    :
-    void {
+  submit() {
     this.userService.updateUser(this.updateUser())
       .subscribe(() => {
         this.snackbar.open('User updated successfully', undefined, {
           duration: 2000
         })
-
         this.dialogRef.close();
         window.location.reload()
       });
