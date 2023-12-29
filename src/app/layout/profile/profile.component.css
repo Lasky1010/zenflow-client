@@ -17,6 +17,24 @@
   margin-bottom: 2rem;
 }
 
+.on-profile {
+  padding-top: 1%;
+  display: flex;
+  position: absolute;
+  -webkit-filter: opacity(0%);
+}
+
+.on-profile:hover {
+  -webkit-filter: opacity(100%);
+  -webkit-transition: all 0.5s ease;
+}
+
+.on-profile:hover .profile-image {
+  cursor: pointer;
+  -webkit-filter: brightness(40%);
+  -webkit-transition: all 0.5s ease;
+}
+
 .post-image {
   width: 400px;
   height: 400px;
