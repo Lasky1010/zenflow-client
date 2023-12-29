@@ -13,9 +13,17 @@
 
 }
 
+.container__comments {
+  text-align: left;
+  margin-left: 10px;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+}
+
 .comments {
   max-height: 250px;
   overflow-y: auto;
+  position: relative;
 }
 
 .comments::-webkit-scrollbar {
