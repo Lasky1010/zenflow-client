@@ -7,6 +7,7 @@ import {ImageService} from "../../service/image.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserService} from "../../service/user.service";
 import {User} from "../../models/User";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-add-post',
@@ -30,10 +31,12 @@ export class AddPostComponent implements OnInit {
               private router: Router,
               private fb: FormBuilder,
               private snackbar: MatSnackBar,
-              private userService: UserService) {
+              private userService: UserService,
+              private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle("Create post")
     //@ts-ignore
     this.userService.getCurrentUser().subscribe(data => {
         this.mainUser = data;

@@ -12,6 +12,7 @@ import {EditComponent} from "../../user/edit/edit.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Post} from "../../models/Post";
 import {PostDialogComponent} from "../../post/postdialog/post-dialog.component";
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -41,7 +42,8 @@ export class ProfileComponent implements OnInit {
               private snackbar: MatSnackBar,
               private imageService: ImageService,
               private userService: UserService,
-              private router: ActivatedRoute) {
+              private router: ActivatedRoute,
+              private titleService: Title) {
 
   }
 
@@ -57,14 +59,19 @@ export class ProfileComponent implements OnInit {
             this.isCurrentUser = true;
             this.user = this.mainUser;
             this.isUserDataLoaded = true;
+            //@ts-ignore
+            this.titleService.setTitle(this.user.username + " Photos");
           } else {
             this.userService.getUserById(userId)
               .subscribe(data => {
                 this.user = data;
                 this.isUserDataLoaded = true;
                 this.isCurrentUser = false;
+                //@ts-ignore
+                this.titleService.setTitle(this.user.username + " Photos");
               });
           }
+
           this.postService.getPostsForUserId(userId).subscribe(data => {
             console.log(data);
             this.user.posts = data;

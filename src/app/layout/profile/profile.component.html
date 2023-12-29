@@ -13,10 +13,11 @@
              #fileInput
              multiple
              (change)="onFileSelected($event)">
-      <img class="on-profile" width="150px" [src]="'https://i.imgur.com/vZJ1cAG.png'">
       <img class="profile-image"
            (click)="fileInput.click()"
-           [src]="previewImgURL || formatImage(user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'" alt="user image">
+           [src]="previewImgURL || formatImage(user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
+           title="Change photo">
+
       <!-- Edit info -->
       <ng-template [ngIf]="isCurrentUser">
 
@@ -29,11 +30,12 @@
 
       <!-- Subscribe -->
       <ng-template [ngIf]="!isCurrentUser">
-        <button mat-flat-button color="accent" (click)="subscribe(this.user.id)"
+        <button mat-flat-button style="background-color: #e32e2e;color: white" (click)="subscribe(this.user.id)"
                 *ngIf="!getIsSubscribed();else unsubBlock">Subscribe
         </button>
         <ng-template #unsubBlock>
-          <button mat-flat-button color="warn" (click)="subscribe(this.user.id)" *ngIf="getIsSubscribed()">
+          <button mat-flat-button style="background-color: #e0c8c8" (click)="subscribe(this.user.id)"
+                  *ngIf="getIsSubscribed()">
             Unsubscribe
           </button>
         </ng-template>

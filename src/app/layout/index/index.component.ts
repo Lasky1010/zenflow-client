@@ -6,6 +6,7 @@ import {PostService} from "../../service/post.service";
 import {UserService} from "../../service/user.service";
 import {ImageService} from "../../service/image.service";
 import {MatDialog} from "@angular/material/dialog";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-index',
@@ -25,11 +26,13 @@ export class IndexComponent implements OnInit {
               private userService: UserService,
               private postService: PostService,
               private imageService: ImageService,
-              private dialog: MatDialog
+              private dialog: MatDialog,
+              private title: Title
   ) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle("Zenflow")
     this.postService.getAllPosts()
       .subscribe(data => {
           console.log(data)
