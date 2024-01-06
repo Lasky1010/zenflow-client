@@ -5,7 +5,6 @@ import {CommentService} from "../../service/comment.service";
 import {PostService} from "../../service/post.service";
 import {UserService} from "../../service/user.service";
 import {ImageService} from "../../service/image.service";
-import {MatDialog} from "@angular/material/dialog";
 import {Title} from "@angular/platform-browser";
 
 @Component({
@@ -21,12 +20,12 @@ export class IndexComponent implements OnInit {
   isDataLoaded = false;
   isUserDataLoaded = false;
   showComments = false;
+  isSubscribed = false;
 
   constructor(private commentService: CommentService,
               private userService: UserService,
               private postService: PostService,
               private imageService: ImageService,
-              private dialog: MatDialog,
               private title: Title
   ) {
   }
@@ -48,6 +47,11 @@ export class IndexComponent implements OnInit {
       .subscribe(data => {
           console.log(data)
           this.user = data
+          for (let u of this.user.onWhoSubscribe) {
+            this.imageService.getProfileImageById(u.id).subscribe(data => {
+              u.imageData = data.imageData;
+            });
+          }
           this.isUserDataLoaded = true
         },
         err => {

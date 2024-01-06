@@ -7,21 +7,26 @@
 
   <div style="padding-top: 2rem" class="row">
     <div class="col-md-auto">
-      <input type="file"
-             style="display: none"
-             formenctype="multipart/form-data"
-             #fileInput
-             multiple
-             (change)="onFileSelected($event)">
-      <img class="profile-image"
-           (click)="fileInput.click()"
-           [src]="previewImgURL || formatImage(user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
-           title="Change photo">
+      <div *ngIf="isCurrentUser;else notCurrent">
+        <input type="file"
+               style="display: none"
+               formenctype="multipart/form-data"
+               #fileInput
+               multiple
+               (change)="onFileSelected($event)">
+        <img class="profile-image"
+             (click)="fileInput.click()"
+             [src]="previewImgURL || formatImage(user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'"
+             title="Change photo">
+      </div>
+      <ng-template #notCurrent>
+        <img class="profile-image"
+             [src]="previewImgURL || formatImage(user.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'">
+      </ng-template>
 
       <!-- Edit info -->
       <ng-template [ngIf]="isCurrentUser">
 
-        <!--        <button mat-button (click)="fileInput.click()">Pick File</button>-->
         <button mat-flat-button color="primary" (click)="openEditDialog()">Edit Info</button>
         <form>
           <button mat-button *ngIf="selectedFile" (click)="onUpload()" formenctype="multipart/form-data">Upload</button>
@@ -51,12 +56,12 @@
 
         </div>
         <div class="col-md-auto">
-          <h6 style="margin-top: 10px">
+          <h6 style="margin-top: 10px" (click)="openSubDialog()">
             <span style="font-weight: 600"> {{user.subscribers.length}}</span> Subscribers
           </h6>
         </div>
         <div class="col-md-auto">
-          <h6 style="margin-top: 10px">
+          <h6 style="margin-top: 10px" (click)=" openSubedDialog()">
             <span style="font-weight: 600">{{user.onWhoSubscribe.length}}</span> Subscribed
           </h6>
         </div>

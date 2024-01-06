@@ -54,6 +54,9 @@
 
 html, body { height: 100%; }
 
+a {
+  cursor: pointer;
+}
 body {
   margin: 0;
   font-family: "Proxima Nova Rg";
@@ -69,6 +72,19 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
+  background-color: #ad6a84;
+  border-radius: 20px;
+}
+
+div::-webkit-scrollbar {
+  width: 12px;
+}
+
+div::-webkit-scrollbar-track {
+  background: white;
+}
+
+div::-webkit-scrollbar-thumb {
   background-color: #ad6a84;
   border-radius: 20px;
 }

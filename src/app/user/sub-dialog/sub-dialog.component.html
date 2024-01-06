@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="card" style="width: 15rem;">
+    <div class="card-body">
+      <div style="overflow-y: auto;position: fixed">
+        <ul class="list-group list-group-flush" *ngFor="let subd of this.subs">
+          <li class="list-group-item" style="padding: 0">
+            <a [routerLink]="['/profile',subd.id]" style="text-decoration: none;">
+              <img class="profile-img" [src]="formatImage(subd.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'">
+              <span style="margin-left: 0.5rem;color: black">{{subd.username}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 
-<div class="container text-center index-page" *ngIf="isDataLoaded && isUserDataLoaded">
+<div class="container index-page" *ngIf="isDataLoaded && isUserDataLoaded">
   <div class="row">
     <div class="col">
     </div>
@@ -101,6 +101,18 @@
 
     </div>
     <div class="col">
+      <div class="card" style="width: 18rem;height:25rem;margin-top: 60px;margin-left: 20%;position: fixed">
+        <div class="card-body" style="overflow-y: auto">
+          <ul class="list-group list-group-flush" *ngFor="let subd of user.onWhoSubscribe">
+            <li class="list-group-item" style="padding: 0">
+              <a [routerLink]="['/profile',subd.id]" style="text-decoration: none;">
+                <img class="profile-img" [src]="formatImage(this.subd.imageData) || 'https://i.imgur.com/ySPGGoI.jpg'">
+                <span style="margin-left: 0.5rem;color: black">{{subd.username}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

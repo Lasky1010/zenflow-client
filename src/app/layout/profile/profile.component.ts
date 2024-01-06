@@ -13,6 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Post} from "../../models/Post";
 import {PostDialogComponent} from "../../post/postdialog/post-dialog.component";
 import {Title} from "@angular/platform-browser";
+import {SubDialogComponent} from "../../user/sub-dialog/sub-dialog.component";
 
 
 @Component({
@@ -85,16 +86,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  openPostDialog(post: Post): void {
-    const dialogUserEditConfig = new MatDialogConfig();
-    dialogUserEditConfig.width = '1000px';
-    dialogUserEditConfig.height = '640px';
-    dialogUserEditConfig.data = {
-      post: post,
-      mainUser: this.mainUser
-    };
-    this.dialog.open(PostDialogComponent, dialogUserEditConfig);
-  }
+
 
 
 
@@ -142,6 +134,37 @@ export class ProfileComponent implements OnInit {
     else { // @ts-ignore
       elem.value = "Email";
     }
+  }
+
+  openSubDialog(): void {
+    const dialogUserEditConfig = new MatDialogConfig();
+    dialogUserEditConfig.width = '350px';
+    dialogUserEditConfig.height = '600px';
+    dialogUserEditConfig.data = {
+      data: this.user.subscribers
+    };
+    this.dialog.open(SubDialogComponent, dialogUserEditConfig);
+  }
+
+  openPostDialog(post: Post): void {
+    const dialogUserEditConfig = new MatDialogConfig();
+    dialogUserEditConfig.width = '1000px';
+    dialogUserEditConfig.height = '640px';
+    dialogUserEditConfig.data = {
+      post: post,
+      mainUser: this.mainUser
+    };
+    this.dialog.open(PostDialogComponent, dialogUserEditConfig);
+  }
+
+  openSubedDialog(): void {
+    const dialogUserEditConfig = new MatDialogConfig();
+    dialogUserEditConfig.width = '350px';
+    dialogUserEditConfig.height = '600px';
+    dialogUserEditConfig.data = {
+      data: this.user.onWhoSubscribe
+    };
+    this.dialog.open(SubDialogComponent, dialogUserEditConfig);
   }
 
 
