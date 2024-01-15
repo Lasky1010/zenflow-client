@@ -19,8 +19,8 @@
 
           <span *ngIf="this.data.mainUser.username===this.data.post.user.username"
                 class="button-delete" (click)="deletePost()">
-             Delete post
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle"
+             Delete
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x-circle"
                  viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
             <path
@@ -61,7 +61,7 @@
         </mat-card-actions>
         <mat-form-field class="w-100">
           <mat-label>Leave a comment...</mat-label>
-          <input (keyup.enter)="postComment($event.target.value)" matInput #message maxlength="128">
+          <input (keyup.enter)="postComment($event.target.value)" matInput id="message" maxlength="128">
         </mat-form-field>
         <!--   Comments   -->
         <div class="comments">

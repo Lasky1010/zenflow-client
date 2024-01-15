@@ -119,6 +119,9 @@ export class IndexComponent implements OnInit {
         console.log(data);
         post.comments.push(data);
       });
+    let elementById = document.getElementById("message");
+    //@ts-ignore
+    elementById.value = ' '
   }
 
   formatImage(img: any): any {

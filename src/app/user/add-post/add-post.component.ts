@@ -32,7 +32,8 @@ export class AddPostComponent implements OnInit {
               private fb: FormBuilder,
               private snackbar: MatSnackBar,
               private userService: UserService,
-              private title: Title) {
+              private title: Title,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -74,6 +75,10 @@ export class AddPostComponent implements OnInit {
   //@ts-ignore
   onFileSelected(event): void {
     this.selectedFile = event.target.files[0];
+    if (this.selectedFile.size > 4000000) {
+      this.snackBar.open("File size more than 4MB")
+      return;
+    }
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (e) => {

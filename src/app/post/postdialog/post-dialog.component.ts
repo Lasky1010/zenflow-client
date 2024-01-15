@@ -93,6 +93,9 @@ export class PostDialogComponent {
         console.log(data);
         this.data.post.comments.push(data);
       });
+    let elementById = document.getElementById("message");
+    //@ts-ignore
+    elementById.value = ' '
   }
 
 

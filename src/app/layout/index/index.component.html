@@ -94,7 +94,7 @@
 
         <mat-form-field class="w-100">
           <mat-label>Leave a comment...</mat-label>
-          <input (keyup.enter)="postComment($event.target.value, post.id, i)" matInput #message maxlength="128">
+          <input (keyup.enter)="postComment($event.target.value, post.id, i)" matInput id="message" maxlength="128">
         </mat-form-field>
 
       </mat-card>
